@@ -1,0 +1,189 @@
+@page {
+  size: A4;
+  margin: 3cm 2cm 2cm 3cm;
+}
+@page textual {
+  @top-right {
+    padding-top: 2cm;
+    content: counter(page);
+  }
+}
+@page verso:left {
+  margin: 3cm 3cm 2cm 2cm;
+}
+@page verso_textual:left {
+  margin: 3cm 3cm 2cm 2cm;
+  @top-left {
+    padding-top: 2cm;
+    content: counter(page);
+  }
+}
+@page verso_textual:right {
+  @top-right {
+    padding-top: 2cm;
+    content: counter(page);
+  }
+}
+.pagedjs_margin-content::after {
+  font-size: 10pt;
+  font-family: 'Arial', sans-serif;
+}
+[data-serifa] .pagedjs_margin-content::after {
+  font-family: 'Times New Roman', serif;
+}
+article header > * {
+  height: 24.7cm;
+  break-after: always;
+}
+article .capa {
+  counter-reset: page;
+}
+article nav a::before {
+  content: target-text(attr(href));
+}
+article nav a::after {
+  content: target-counter(attr(href), page);
+}
+article main,
+article footer {
+  page: textual;
+}
+article main h1,
+article footer h1 {
+  margin-top: 0;
+}
+article main h1:not(:first-child),
+article footer h1:not(:first-child) {
+  break-before: page;
+}
+article figure {
+  break-inside: avoid;
+}
+article footer {
+  break-before: always;
+}
+article.verso {
+  page: verso;
+}
+article.verso header > * {
+  break-after: right;
+}
+article.verso main,
+article.verso footer {
+  page: verso_textual;
+}
+article.verso main h1:not(:first-child),
+article.verso footer h1:not(:first-child) {
+  break-before: right;
+}
+article.verso footer {
+  break-before: right;
+}
+article h1 {
+  counter-reset: h2;
+  counter-increment: h1;
+}
+article h2 {
+  counter-reset: h3;
+  counter-increment: h2;
+}
+article h3 {
+  counter-reset: h4;
+  counter-increment: h3;
+}
+article h4 {
+  counter-reset: h5;
+  counter-increment: h4;
+}
+article h5 {
+  counter-reset: h6;
+  counter-increment: h5;
+}
+article main {
+  counter-reset: h1;
+}
+article ul,
+article ol {
+  counter-reset: alínea;
+}
+article li {
+  counter-increment: alínea;
+}
+article main .desenho {
+  counter-increment: desenho;
+}
+article nav .desenho {
+  counter-increment: desenho0;
+}
+article main .esquema {
+  counter-increment: esquema;
+}
+article nav .esquema {
+  counter-increment: esquema0;
+}
+article main .figura {
+  counter-increment: figura;
+}
+article nav .figura {
+  counter-increment: figura0;
+}
+article main .fluxograma {
+  counter-increment: fluxograma;
+}
+article nav .fluxograma {
+  counter-increment: fluxograma0;
+}
+article main .fotografia {
+  counter-increment: fotografia;
+}
+article nav .fotografia {
+  counter-increment: fotografia0;
+}
+article main .gráfico {
+  counter-increment: gráfico;
+}
+article nav .gráfico {
+  counter-increment: gráfico0;
+}
+article main .imagem {
+  counter-increment: imagem;
+}
+article nav .imagem {
+  counter-increment: imagem0;
+}
+article main .mapa {
+  counter-increment: mapa;
+}
+article nav .mapa {
+  counter-increment: mapa0;
+}
+article main .organograma {
+  counter-increment: organograma;
+}
+article nav .organograma {
+  counter-increment: organograma0;
+}
+article main .planta {
+  counter-increment: planta;
+}
+article nav .planta {
+  counter-increment: planta0;
+}
+article main .quadro {
+  counter-increment: quadro;
+}
+article nav .quadro {
+  counter-increment: quadro0;
+}
+article main .retrato {
+  counter-increment: retrato;
+}
+article nav .retrato {
+  counter-increment: retrato0;
+}
+article main .tabela {
+  counter-increment: tabela;
+}
+article nav .tabela {
+  counter-increment: tabela0;
+}

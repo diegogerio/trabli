@@ -1,0 +1,331 @@
+article {
+  line-height: 1.5;
+  font-family: 'Arial', sans-serif;
+  &,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 12pt;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    display: flex;
+    margin: 1.5em 0;
+    &::before {
+      padding-right: 0.25em;
+    }
+  }
+  h1,
+  h2,
+  h6 {
+    text-transform: uppercase;
+  }
+  h2,
+  h4,
+  h5 {
+    font-weight: normal;
+  }
+  h5 {
+    font-style: italic;
+  }
+  h6 {
+    font-weight: bold;
+    &::before {
+      content: '';
+    }
+  }
+  @for $seção from 1 through 5 {
+    h#{$seção}::before {
+      $seções: counter(h1);
+      @for $cada from 1 to $seção {
+        $seções: $seções '.' counter(h#{$cada + 1});
+      }
+      content: $seções;
+    }
+  }
+  header > *,
+  footer > *,
+  .referencias > ul {
+    &::before {
+      display: block;
+      margin-bottom: 1.5em;
+      text-transform: uppercase;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+  .capa,
+  .rosto,
+  .aprovação {
+    display: grid;
+    text-transform: uppercase;
+    p,
+    ul {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    ul {
+      flex-direction: column;
+    }
+  }
+  .capa {
+    grid-template-rows: auto 1fr auto 1fr auto auto;
+  }
+  .vínculo {
+    grid-row: 1;
+  }
+  .autores {
+    grid-row: 1;
+  }
+  .vínculo + .autores {
+    grid-row: 2 !important;
+  }
+  .título {
+    grid-row: 3;
+    display: inline;
+  }
+  .local {
+    grid-row: 5;
+  }
+  .data {
+    grid-row: 6;
+  }
+  .rosto {
+    grid-template-rows: auto 1fr auto auto auto 1fr auto auto;
+    .local {
+      grid-row: 7;
+    }
+    .data {
+      grid-row: 8;
+    }
+  }
+  .natureza,
+  .orientação {
+    margin-left: 50%;
+    text-align: justify !important;
+    text-transform: none;
+    line-height: 1;
+  }
+  .natureza {
+    grid-row: 4;
+    margin-top: 1.5em;
+  }
+  .orientação {
+    grid-row: 5;
+    display: inline !important;
+    margin-top: 1em;
+    &::before {
+      content: 'Orientação: ';
+    }
+  }
+  .aprovação {
+    grid-template-rows: auto 1fr auto auto 1fr auto;
+  }
+  .aprovadores {
+    grid-row: 6;
+    text-transform: none;
+    &::before {
+      content: '____ /____ /______';
+      margin-bottom: 1.5em;
+    }
+    li {
+      width: 50%;
+      margin-top: 3em;
+      padding-top: 0.5em;
+      border-top: 1px solid;
+    }
+  }
+  .ilustrações,
+  .tabelas {
+    &::before {
+      content: 'Lista de ' attr(class);
+    }
+  }
+  .resumo,
+  .abstract,
+  .sumário {
+    &::before {
+      content: attr(class);
+    }
+  }
+  .resumo,
+  .abstract {
+    p {
+      margin-bottom: 1.5em;
+    }
+  }
+  .resumo p:last-child::before {
+    content: 'Palavras-chave: ';
+  }
+  .abstract p:last-child::before {
+    content: 'Keywords: ';
+  }
+  a {
+    color: unset;
+    text-decoration: none;
+  }
+  nav {
+    > * {
+      margin: 0;
+      display: table-row;
+      &::before {
+        display: table-cell;
+      }
+    }
+    > *::after,
+    a::after {
+      font-style: normal;
+      font-weight: normal;
+    }
+    a::after {
+      position: absolute;
+      right: 0;
+    }
+    h6 > a::before {
+      content: none;
+    }
+  }
+  &.linhas nav {
+    overflow: hidden;
+    > *::after {
+      width: 0;
+      float: left;
+      content: '.......................................................................................................................................................';
+    }
+    a,
+    a::after {
+      background-color: white;
+    }
+  }
+  p,
+  blockquote,
+  li {
+    text-align: justify;
+  }
+  p {
+    margin: 0;
+  }
+  blockquote,
+  figure {
+    font-size: 10pt;
+    line-height: 1;
+    margin: 6pt 0;
+  }
+  blockquote {
+    margin-left: 4cm;
+  }
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  main {
+    > p {
+      text-indent: 1.25cm;
+    }
+    ul,
+    ol {
+      padding-left: 1.25cm;
+    }
+    li {
+      display: table;
+      &::before {
+        display: table-cell;
+        padding-right: 0.25em;
+        content: counter(alínea, lower-alpha) ')';
+      }
+      ul,
+      ol {
+        padding-left: 0;
+      }
+      li::before {
+        content: '—';
+      }
+    }
+  }
+  figure,
+  nav p {
+    &::before {
+      padding-right: 0.25em;
+      text-transform: capitalize;
+    }
+  }
+  figure {
+    text-align: center;
+    > p {
+      display: inline;
+      &:last-child::before {
+        content: 'Fonte: ';
+      }
+    }
+    img,
+    table {
+      margin: 3pt auto;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+    }
+    table {
+      border-collapse: collapse;
+      text-align: left;
+      th,
+      td {
+        padding: 0 0.25em;
+      }
+      th,
+      tr:first-child {
+        border-top: 1px solid !important;
+      }
+      th,
+      tr:last-child {
+        border-bottom: 1px solid !important;
+      }
+    }
+  }
+  @each $tipo in desenho, esquema, figura, fluxograma, fotografia, gráfico,
+    imagem, mapa, organograma, planta, quadro, retrato, tabela
+  {
+    main .#{$tipo}::before {
+      content: '#{$tipo} 'counter(#{$tipo})' —';
+    }
+    nav .#{$tipo}:before {
+      content: '#{$tipo} 'counter(#{$tipo}0)' —';
+    }
+  }
+  #referencias,
+  .referencias > ul {
+    line-height: 1;
+    &::before {
+      content: 'Referências';
+    }
+    li {
+      text-align: left;
+      &:not(:last-child) {
+        margin-bottom: 1em;
+      }
+    }
+  }
+  .referencias {
+    margin-bottom: 1.5em;
+    & > ul {
+      padding: 0;
+      li::before {
+        content: none;
+      }
+    }
+  }
+}
+[data-serifa] article {
+  font-family: 'Times New Roman', serif;
+}

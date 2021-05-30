@@ -1,0 +1,11 @@
+{
+  "typeAcquisition": {
+    "enable": true
+  },
+  "compilerOptions": {
+    "lib": ["dom", "esnext"],
+    "jsx": "react-jsx",
+    "target": "es5",
+    "suppressImplicitAnyIndexErrors": true
+  }
+}
