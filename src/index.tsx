@@ -2,7 +2,7 @@ import './estilos/index.scss'
 import { lazy, Suspense } from 'react'
 import { render } from 'react-dom'
 import { Provedor } from './contexto'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 
 const Início = lazy(() => import('./paginas/inicio'))
 const Edição = lazy(() => import('./paginas/edicao'))
@@ -10,7 +10,7 @@ const Edição = lazy(() => import('./paginas/edicao'))
 render(
   <Suspense fallback="Carregando...">
     <Provedor>
-      <Router basename="/trabli-beta">
+      <Router>
         <Switch>
           <Route path="/:trabalho" component={Edição} />
           <Route path="/" component={Início} />
