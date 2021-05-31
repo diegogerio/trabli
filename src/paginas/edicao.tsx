@@ -4,7 +4,7 @@ import { usarDoc } from '../contexto'
 import { usePositioner } from 'remirror/react/hooks'
 import { Provedor, usarEditor } from '../editor'
 import Compressor from 'compressorjs'
-import { route } from 'preact-router'
+import { Link, useHistory } from 'react-router-dom'
 import {
   Contrast16,
   Education16,
@@ -323,8 +323,10 @@ const Editor = () => {
               <TextUnderline16 />
             </button>
           </aside>
-          <button onClick={() => route('/')}>
-            <Home16 />
+          <button>
+            <Link to="/">
+              <Home16 />
+            </Link>
           </button>
           <dialog open={menus.impressão}>
             <YString
@@ -530,7 +532,7 @@ const Editor = () => {
       </div>
     )
   } catch {
-    location.reload()
+    useHistory().go(0)
   }
 }
 export default () => (

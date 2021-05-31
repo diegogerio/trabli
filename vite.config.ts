@@ -3,6 +3,7 @@ import preactPreset from '@preact/preset-vite'
 
 export default defineConfig({
   plugins: [preactPreset()],
+  base: '/trabli-beta/',
   server: {
     open: true,
   },
