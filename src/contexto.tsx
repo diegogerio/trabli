@@ -2,7 +2,7 @@ import { Meta } from './tipos/interfaces'
 import { createContext, useContext, FC, useState, useEffect } from 'react'
 import { IndexeddbPersistence } from 'y-indexeddb'
 import { Doc } from 'yjs'
-import { getCurrentUrl } from 'preact-router'
+import { useParams } from 'react-router-dom'
 
 const contexto =
   createContext<
@@ -31,7 +31,7 @@ export const Provedor: FC = props => {
   )
 }
 export const usarDoc = () => {
-  const guid = getCurrentUrl().slice(1)
+  const guid = useParams<{ trabalho: string }>().trabalho
   const [persistências, pôrPersistências] = useContext(contexto)
   const persistência = persistências.find(({ doc }) => doc.guid == guid)
   if (persistência) return persistência.doc
